@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import 'cross-fetch/polyfill';
-import ApolloClient from 'apollo-boost';
+import ApolloClient, { gql } from 'apollo-boost';
 
 const client = new ApolloClient({
   uri: process.env.GITHUB_GRAPHQL_ENDPOINT,
@@ -19,3 +19,31 @@ const client = new ApolloClient({
     });
   },
 });
+
+// GraphQL query
+const GET_ORGANIZATION = gql`
+  {
+    organization(login: "the-road-to-learn-react") {
+      name
+      url
+    }
+  }
+`;
+
+// Run the query
+client
+  .query({
+    query: GET_ORGANIZATION,
+  })
+  .then(console.log);
+
+/* Sample output
+{ data:
+   { organization:
+      { name: 'The Road to learn React',
+        url: 'https://github.com/the-road-to-learn-react',
+        __typename: 'Organization' } },
+  loading: false,
+  networkStatus: 7,
+  stale: false }
+*/
