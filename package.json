@@ -10,6 +10,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheRobBrennan/demo-graphql-headless.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TheRobBrennan/demo-graphql-headless/issues"
+  },
+  "homepage": "https://github.com/TheRobBrennan/demo-graphql-headless#readme",
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/node": "^7.2.2",
