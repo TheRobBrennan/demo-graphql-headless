@@ -9,5 +9,8 @@ import { GET_ORGANIZATION } from './github/queries'
 GitHub
   .query({
     query: GET_ORGANIZATION,
+    variables: {
+      organization: 'the-road-to-learn-react',
+    }
   })
   .then(console.log);
