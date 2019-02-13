@@ -1,16 +1,21 @@
 import 'dotenv/config';
-import 'cross-fetch/polyfill';  // Allows us to use the fetch API in a Node.js environment
+import 'cross-fetch/polyfill'; // Allows us to use the fetch API in a Node.js environment
 
 // GraphQL client and related libraries
-import { client as GitHub } from './github/client'
-import { GET_REPOSITORIES_OF_ORGANIZATION } from './github/queries'
+import { client as GitHub } from './github/client';
+import { ADD_STAR, REMOVE_STAR } from './github/mutations';
 
-// Run the query
-GitHub
-  .query({
-    query: GET_REPOSITORIES_OF_ORGANIZATION,
-    variables: {
-      organization: 'the-road-to-learn-react',
-    }
-  })
-  .then(result => console.log(JSON.stringify(result, null, 2)));
+// Run the mutation
+GitHub.mutate({
+  mutation: ADD_STAR,
+  variables: {
+    repositoryId: 'MDEwOlJlcG9zaXRvcnk2MzM1MjkwNw==',
+  },
+}).then(result => console.log(JSON.stringify(result, null, 2)));
+
+GitHub.mutate({
+  mutation: REMOVE_STAR,
+  variables: {
+    repositoryId: 'MDEwOlJlcG9zaXRvcnk2MzM1MjkwNw==',
+  },
+}).then(result => console.log(JSON.stringify(result, null, 2)));
