@@ -1,13 +1,21 @@
 import 'dotenv/config';
+import 'cross-fetch/polyfill'; // Allows us to use the fetch API in a Node.js environment
 
-const userCredentials = { firstname: 'Robin' };
-const userDetails = { nationality: 'German' };
+// GraphQL client and related libraries
+import { client as GitHub } from './github/client';
+import { ADD_STAR, REMOVE_STAR } from './github/mutations';
 
-const user = {
-  ...userCredentials,
-  ...userDetails,
-};
+// Run the mutation
+GitHub.mutate({
+  mutation: ADD_STAR,
+  variables: {
+    repositoryId: 'MDEwOlJlcG9zaXRvcnk2MzM1MjkwNw==',
+  },
+}).then(result => console.log(JSON.stringify(result, null, 2)));
 
-console.log(user);
-
-console.log(process.env.SOME_ENV_VARIABLE);
+GitHub.mutate({
+  mutation: REMOVE_STAR,
+  variables: {
+    repositoryId: 'MDEwOlJlcG9zaXRvcnk2MzM1MjkwNw==',
+  },
+}).then(result => console.log(JSON.stringify(result, null, 2)));

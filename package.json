@@ -10,6 +10,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheRobBrennan/demo-graphql-headless.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TheRobBrennan/demo-graphql-headless/issues"
+  },
+  "homepage": "https://github.com/TheRobBrennan/demo-graphql-headless#readme",
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/node": "^7.2.2",
@@ -17,6 +25,9 @@
     "nodemon": "^1.18.9"
   },
   "dependencies": {
-    "dotenv": "^6.2.0"
+    "apollo-boost": "^0.1.27",
+    "cross-fetch": "^3.0.1",
+    "dotenv": "^6.2.0",
+    "graphql": "^14.1.1"
   }
 }
